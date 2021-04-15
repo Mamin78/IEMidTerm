@@ -1,0 +1,80 @@
+body {
+    font-family: "Nexa Light", serif;
+    background-image: url("Back.jpg");
+    background-repeat: no-repeat;
+    /*!*background-size: cover;*!*/
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+#container {
+    width: 100%;
+    height: 97vh;
+    display: flex;
+}
+
+#inner-div {
+    border-radius: 0 15px 0 15px;
+    padding: 1.5%;
+    background-color: #2d3436;
+    opacity: 80%;
+    margin: auto;
+    text-align: left;
+    color: #dfe6e9;
+    display: flex;
+}
+
+.title {
+    font-family: "Nexa Bold", serif;
+    font-size: 2em;
+    color: #ffeaa7;
+}
+
+.left {
+    padding-right: 1vw;
+    display: inline-block;
+    margin-right: 1vw;
+}
+
+.right {
+    display: inline-block;
+    margin-left: 1vw;
+    padding-left: 1vw;
+}
+
+input {
+    margin-bottom: 1vh;
+    Outline: none;
+    border: none;
+}
+
+.button {
+    background-color: #636e72;
+    border-radius: 5px;
+    border: 1px solid #636e72;
+    color: #dfe6e9;
+    padding: 2.2%;
+}
+
+.right_border {
+    border-right: 1px dashed #636e72;
+}
+
+input[type=text] {
+    background-color: #dfe6e9;
+    border: none;
+    padding: 5px;
+    transition: width 0.4s ease-in-out;
+    width: 70%;
+    border-radius: 15px;
+    margin: 1vh 0 2vh 0;
+}
+
+input[type=text]:focus {
+    width: 90%;
+}
+
+form {
+    padding-left: 1vw;
+}
+

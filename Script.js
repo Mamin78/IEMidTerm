@@ -11,11 +11,8 @@ let person = {
 function setPrediction(result) {
     document.getElementsByClassName("right")[0].style.display = 'block';
     document.getElementById("prediction-gender").innerHTML = result['gender'];
-
     document.getElementById("prediction-prob").innerHTML = result['probability'];
-
     document.getElementsByClassName("left")[0].style.borderRight = '1px dashed #636e72';
-    // document.getElementsByClassName("left")[0].style.marginRight = '1vw';
     document.getElementsByClassName("left")[0].style.paddingRight = '1.25vw';
     document.getElementById("prediction").style.display = 'block';
 }
@@ -26,14 +23,58 @@ function setSavedAnswer(inputGender) {
     document.getElementById("saved-answer").style.display = 'block';
 }
 
+function savedAnswerConditions(result, name) {
+    const inputGender = document.getElementsByName("gender");
+
+    if (inputGender[0].checked || inputGender[1].checked) {
+        if (getItem(name) !== null) {
+            removeItem(name);
+        }
+        if (inputGender[0].checked) {
+            setSavedAnswer('male');
+
+            person._name = name;
+
+            setItem(name, "male");
+
+            makeUncheckedRadio("male");
+        } else if (inputGender[1].checked) {
+            setSavedAnswer('female');
+
+            person._name = name;
+
+            setItem(name, "female");
+
+            makeUncheckedRadio("female");
+        }
+    } else {
+        const savedGender = getItem(name);
+        if (savedGender !== null) {
+            setSavedAnswer(savedGender);
+            person._name = name;
+        } else {
+            document.getElementById("saved-answer").style.display = 'none';
+
+        }
+    }
+}
+
+function makeUncheckedRadio(id) {
+    document.getElementById(id).checked = false;
+}
+
 async function handleSubmitClick(name) {
     if (name === "") {
         window.alert("Please write your name.");
     } else {
-        const result = await fetch(
-            `https://api.genderize.io/?name=${name}`,
-        ).then((reponse) => reponse.json());
-
+        let result = null;
+        try {
+            result = await fetch(
+                `https://api.genderize.io/?name=${name}`,
+            ).then((reponse) => reponse.json());
+        } catch (error) {
+            window.alert("Your name isn't in our DataBase.!");
+        }
         console.log(result);
 
         if (result['gender'] === null) {
@@ -42,52 +83,16 @@ async function handleSubmitClick(name) {
         } else {
             setPrediction(result);
 
-            const inputGender = document.getElementsByName("gender");
-
-            if (inputGender[0].checked || inputGender[1].checked) {
-                if (getItem(name) !== null) {
-                    removeItem(name);
-                }
-                if (inputGender[0].checked) {
-                    setSavedAnswer('male');
-
-                    person._name = name;
-
-                    setItem(name, "male");
-
-                    document.getElementById("male").checked = false;
-                } else if (inputGender[1].checked) {
-                    setSavedAnswer('female');
-
-                    person._name = name;
-
-                    setItem(name, "female");
-
-                    document.getElementById("female").checked = false;
-                }
-            } else {
-                const savedGender = getItem(name);
-                if (savedGender !== null) {
-                    setSavedAnswer(savedGender);
-                    person._name = name;
-                } else {
-                    document.getElementById("saved-answer").style.display = 'none';
-
-                }
-            }
+            savedAnswerConditions(result, name);
         }
     }
 }
 
 function handleRemoveClick() {
-    console.log("remove button clicked");
-    console.log(getItem(person._name));
     if (getItem(person._name) !== null) {
         removeItem(person._name);
         person._name = '';
         document.getElementById("saved-answer-gender").innerHTML = getItem(person._name);
-        // console.log(getItem(person._name));
-        // console.log(person._name);
         document.getElementById("saved-answer").style.display = 'none';
     }
 }

@@ -1,4 +1,5 @@
 //Mohammad Amin Shafiei - 97243041
+//for save the input name and use it for clear data.
 let person = {
     _name: "",
     get name() {

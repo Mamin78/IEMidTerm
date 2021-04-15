@@ -2,18 +2,18 @@
 /*import fonts*/
 @font-face {
     font-family: "Nexa Bold";
-    src: url("NexaBold.otf");
+    src: url("Fonts/NexaBold.otf");
 }
 
 @font-face {
     font-family: "Nexa Light";
-    src: url("NexaLight.otf");
+    src: url("Fonts/NexaLight.otf");
 }
 
 /*set an image as background*/
 body {
     font-family: "Nexa Light", serif;
-    background-image: url("Back1.jpg");
+    background-image: url("Images/Back.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-attachment: fixed;

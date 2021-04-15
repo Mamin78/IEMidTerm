@@ -1,3 +1,4 @@
+//Mohammad Amin Shafiei - 97243041
 let person = {
     _name: "",
     get name() {

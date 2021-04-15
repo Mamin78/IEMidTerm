@@ -4,7 +4,7 @@
     <link href="Style.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="Script.js" defer></script>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Mr. or Ms.?</title>
 </head>
 <body>
 <div id="container">
@@ -27,19 +27,27 @@
             </form>
         </div>
 
-        <div class="right">
-            <div>
+        <div class="right" style="display: none">
+            <div id="prediction">
                 <p class="title">Prediction</p>
-                <div id="f_result" class="result">
-                    <p>info</p>
+                <div class="prediction-information">
+                    <span class="sub-title">Gender:</span>
+                    <p id="prediction-gender"></p>
+                    <!--                    <br>-->
+                    <span class="sub-title">Probability:</span>
+                    <p id="prediction-prob"></p>
                 </div>
             </div>
 
-            <div>
+            <div id="saved-answer">
                 <p class="title">Saved Answer</p>
                 <div>
-                    <p>info</p>
+                    <div id="saved-answer-information">
+                        <span class="sub-title">Gender:</span>
+                        <p id="saved-answer-gender"></p>
+                    </div>
                 </div>
+                <br>
                 <input class="button" type="reset" value="Clear">
             </div>
         </div>

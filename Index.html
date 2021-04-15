@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="Style.css" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="container">
+    <div id="inner-div">
+        <div class="left right_border">
+            <p class="title">Mr. or Ms.?</p>
+            <form action="">
+                <label for="name">Name</label>
+                <br class="line">
+                <input type="text" id="name">
+                <br>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                <br>
+                <br>
+                <input id="submit_btn" class="button" type="submit" value="Submit">
+            </form>
+        </div>
+
+        <div class="right">
+            <div>
+                <p class="title">Prediction</p>
+                <div id="f_result" class="result">
+                    <p>info</p>
+                </div>
+            </div>
+
+            <div>
+                <p class="title">Saved Answer</p>
+                <div>
+                    <p>info</p>
+                </div>
+                <input class="button" type="reset" value="Clear">
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

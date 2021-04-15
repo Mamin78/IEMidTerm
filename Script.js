@@ -1,18 +1,11 @@
-let personGender = {
+let person = {
     _name: "",
-    _gender: "",
     get name() {
         return this._name;
     },
-    get gender() {
-        return this.gender;
-    },
     set name(inputName) {
         this._name = inputName;
-    },
-    set gender(inputGender) {
-        this._gender = inputGender;
-    },
+    }
 };
 
 function setPrediction(result) {
@@ -28,6 +21,7 @@ function setPrediction(result) {
 }
 
 function setSavedAnswer(inputGender) {
+    console.log("set s a");
     document.getElementById("saved-answer-gender").innerHTML = inputGender;
     document.getElementById("saved-answer").style.display = 'block';
 }
@@ -51,39 +45,31 @@ async function handleSubmitClick(name) {
             const inputGender = document.getElementsByName("gender");
 
             if (inputGender[0].checked || inputGender[1].checked) {
-                console.log("radio ddddddddddddddddddddddddd");
                 if (getItem(name) !== null) {
                     removeItem(name);
                 }
                 if (inputGender[0].checked) {
                     setSavedAnswer('male');
 
-                    personGender._name = name;
-                    personGender._gender = "male";
+                    person._name = name;
 
                     setItem(name, "male");
 
-                    console.log("first if");
                     document.getElementById("male").checked = false;
                 } else if (inputGender[1].checked) {
                     setSavedAnswer('female');
 
-                    personGender._name = name;
-                    personGender._gender = "female";
+                    person._name = name;
 
                     setItem(name, "female");
 
-                    console.log("second if");
                     document.getElementById("female").checked = false;
                 }
             } else {
                 const savedGender = getItem(name);
                 if (savedGender !== null) {
                     setSavedAnswer(savedGender);
-                    personGender._name = name;
-                    personGender._gender = '';
-
-                    console.log("third if");
+                    person._name = name;
                 } else {
                     document.getElementById("saved-answer").style.display = 'none';
 
@@ -94,13 +80,16 @@ async function handleSubmitClick(name) {
 }
 
 function handleRemoveClick() {
-    // if (getItem(personGender._name) !== null) {
-    removeItem(personGender._name);
-    personGender._name = '';
-    personGender._gender = '';
-    document.getElementById("saved-answer-gender").innerHTML = getItem(personGender._name);
-    document.getElementById("saved-answer").style.display = 'none';
-    // }
+    console.log("remove button clicked");
+    console.log(getItem(person._name));
+    if (getItem(person._name) !== null) {
+        removeItem(person._name);
+        person._name = '';
+        document.getElementById("saved-answer-gender").innerHTML = getItem(person._name);
+        // console.log(getItem(person._name));
+        // console.log(person._name);
+        document.getElementById("saved-answer").style.display = 'none';
+    }
 }
 
 function getItem(key) {

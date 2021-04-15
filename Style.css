@@ -1,10 +1,24 @@
+@font-face {
+    font-family: "Nexa Bold";
+    src: url("NexaBold.otf");
+}
+
+@font-face {
+    font-family: "Nexa Light";
+    src: url("NexaLight.otf");
+}
+
 body {
     font-family: "Nexa Light", serif;
     background-image: url("Back1.jpg");
     background-repeat: no-repeat;
-    /*!*background-size: cover;*!*/
     background-size: 100% 100%;
     background-attachment: fixed;
+}
+
+*::selection {
+    background-color: #2d3436;
+    color: #2d3436;
 }
 
 #container {
@@ -25,10 +39,11 @@ body {
 }
 
 .title {
+    padding-left: 5px;
     font-family: "Nexa Bold", serif;
     font-size: 2em;
     color: #ffeaa7;
-    border-bottom: 1px dashed #636e72;
+    border-bottom: 1px dashed #ffeaa7;
 }
 
 .title::selection {
@@ -43,11 +58,7 @@ body {
 }
 
 .left {
-    padding-right: 0vw;
-    /*    after showing information must be 1vw*/
     display: inline-block;
-    /*margin-right: 0vw;*/
-    /*    after showing information must be 1vw*/
 }
 
 .right {
@@ -62,11 +73,12 @@ input {
 }
 
 .button {
-    background-color: #636e72;
-    border-radius: 5px;
-    border: 1px solid #636e72;
-    color: #dfe6e9;
-    padding: 2.2% 4% 2.2% 4%;
+    font-family: "Nexa Light", sans-serif;
+    font-size: 1.1em;
+    background-color: #dfe6e9;
+    border-left: 7px solid #b2bec3;
+    color: #2d3436;
+    padding: 2.75%;
 }
 
 .right_border {
@@ -75,17 +87,19 @@ input {
 }
 
 input[type=text] {
+    font-family: "Nexa Light", sans-serif;
+    font-size: 1.1em;
     background-color: #dfe6e9;
     border: none;
     padding: 5px;
     transition: width 0.4s ease-in-out;
     width: 70%;
-    border-radius: 15px;
+    border-left: 7px solid #b2bec3;
     margin: 1vh 0 2vh 0;
 }
 
 input[type=text]:focus {
-    width: 90%;
+    width: 92%;
 }
 
 form {
@@ -97,5 +111,5 @@ form {
 }
 
 #saved-answer {
-    /*display: none;*/
+    display: none;
 }

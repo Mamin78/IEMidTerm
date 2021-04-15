@@ -1,6 +1,6 @@
 body {
     font-family: "Nexa Light", serif;
-    background-image: url("Back.jpg");
+    background-image: url("Back1.jpg");
     background-repeat: no-repeat;
     /*!*background-size: cover;*!*/
     background-size: 100% 100%;
@@ -30,11 +30,18 @@ body {
     color: #ffeaa7;
     border-bottom: 1px dashed #636e72;
 }
-.sub-title{
+
+.title::selection {
+    background-color: #ffeaa7;
+    color: #2d3436;
+}
+
+.sub-title {
     font-family: "Nexa Bold", serif;
     font-size: 1.1em;
     color: #ffeaa7;
 }
+
 .left {
     padding-right: 0vw;
     /*    after showing information must be 1vw*/
@@ -59,7 +66,7 @@ input {
     border-radius: 5px;
     border: 1px solid #636e72;
     color: #dfe6e9;
-    padding: 2.2%;
+    padding: 2.2% 4% 2.2% 4%;
 }
 
 .right_border {

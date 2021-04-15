@@ -1,3 +1,4 @@
+/*import fonts*/
 @font-face {
     font-family: "Nexa Bold";
     src: url("NexaBold.otf");
@@ -8,6 +9,7 @@
     src: url("NexaLight.otf");
 }
 
+/*set an image as background*/
 body {
     font-family: "Nexa Light", serif;
     background-image: url("Back1.jpg");
@@ -16,17 +18,21 @@ body {
     background-attachment: fixed;
 }
 
+/*set selection selector with a gray background and a white color for texts*/
 *::selection {
     background-color: #2d3436;
     color: #2d3436;
 }
 
+/*for centralization*/
 #container {
     width: 100%;
     height: 97vh;
     display: flex;
 }
 
+/*styles for main box*/
+/*in this piece of code, i set margin as auto for centralization, i set opacity 80% as wanted and some other styles like color, text-align etc.*/
 #inner-div {
     border-radius: 0 15px 0 15px;
     padding: 1.5%;
@@ -38,6 +44,7 @@ body {
     display: flex;
 }
 
+/*title is class for main texts with text color = yellow and border-bottom as yellow.*/
 .title {
     padding-left: 5px;
     font-family: "Nexa Bold", serif;
@@ -46,21 +53,26 @@ body {
     border-bottom: 1px dashed #ffeaa7;
 }
 
+/*yellow back and gray text color*/
 .title::selection {
     background-color: #ffeaa7;
     color: #2d3436;
 }
 
+/*sub title is a class for {gender and probability} titles.*/
 .sub-title {
     font-family: "Nexa Bold", serif;
     font-size: 1.1em;
     color: #ffeaa7;
 }
 
+/*left section (Mr. or Ms.?).*/
 .left {
     display: inline-block;
 }
 
+/*right section (prediction and saved answer)*/
+/*i set display as inline-block because right must be next of left div*/
 .right {
     display: inline-block;
     margin-left: 1.25vw;
@@ -81,11 +93,8 @@ input {
     padding: 2.75%;
 }
 
-.right_border {
-    border-right: 0px dashed #636e72;
-    /*    after showing information must be 1ps*/
-}
-
+/*style for text input(name in my code)*/
+/*i changed the font family, font size, border and background of it.*/
 input[type=text] {
     font-family: "Nexa Light", sans-serif;
     font-size: 1.1em;
@@ -98,6 +107,7 @@ input[type=text] {
     margin: 1vh 0 2vh 0;
 }
 
+/*when we click on name box it can be wider*/
 input[type=text]:focus {
     width: 92%;
 }
@@ -106,10 +116,12 @@ form {
     padding-left: 1vw;
 }
 
+/*i set display of prediction part as none because when we have not requested, this part shouldn't displayed.*/
 #prediction {
     display: none;
 }
 
+/*i set display of saved answer part as none because when we have not requested, this part shouldn't displayed.*/
 #saved-answer {
     display: none;
 }

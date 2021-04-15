@@ -9,6 +9,7 @@ let person = {
 };
 
 function setPrediction(result) {
+    //set prediction part's values and set display of it as block because we want to display it now.
     document.getElementsByClassName("right")[0].style.display = 'block';
     document.getElementById("prediction-gender").innerHTML = result['gender'];
     document.getElementById("prediction-prob").innerHTML = result['probability'];
@@ -18,15 +19,17 @@ function setPrediction(result) {
 }
 
 function setSavedAnswer(inputGender) {
-    console.log("set s a");
+    //set gender's value and set display of it as block because we want to display it now.
     document.getElementById("saved-answer-gender").innerHTML = inputGender;
     document.getElementById("saved-answer").style.display = 'block';
 }
 
 function savedAnswerConditions(result, name) {
+    //get radio input's values.
     const inputGender = document.getElementsByName("gender");
 
     if (inputGender[0].checked || inputGender[1].checked) {
+        //if one radio box is checked.
         if (getItem(name) !== null) {
             removeItem(name);
         }
@@ -50,6 +53,7 @@ function savedAnswerConditions(result, name) {
     } else {
         const savedGender = getItem(name);
         if (savedGender !== null) {
+            //if gender of this name has been saved.
             setSavedAnswer(savedGender);
             person._name = name;
         } else {
@@ -64,7 +68,9 @@ function makeUncheckedRadio(id) {
 }
 
 async function handleSubmitClick(name) {
+    //event handler for submit bottom.
     if (name === "") {
+        //name box is empty.
         window.alert("Please write your name.");
     } else {
         let result = null;
@@ -81,14 +87,15 @@ async function handleSubmitClick(name) {
             // if input name isn't in database we should alert!
             window.alert("Your name isn't in our DataBase.!");
         } else {
+            //set and display right part of page.
             setPrediction(result);
-
             savedAnswerConditions(result, name);
         }
     }
 }
 
 function handleRemoveClick() {
+    //event handler for clear bottom.
     if (getItem(person._name) !== null) {
         removeItem(person._name);
         person._name = '';
@@ -97,6 +104,7 @@ function handleRemoveClick() {
     }
 }
 
+//functions for local storage.
 function getItem(key) {
     return JSON.parse(localStorage.getItem(key));
 }
@@ -109,6 +117,7 @@ function removeItem(key) {
     localStorage.removeItem(key);
 }
 
+//set onclick event handler of submit bottom.
 const input = document.querySelector('#name');
 const submitBtn = document.querySelector('#submit_btn');
 submitBtn.addEventListener('click', (e) => {
@@ -116,7 +125,7 @@ submitBtn.addEventListener('click', (e) => {
     handleSubmitClick(input.value);
 })
 
-
+//set onclick event handler of clear bottom.
 const removeBtn = document.querySelector('#remove-btn');
 removeBtn.addEventListener('click', (e) => {
     e.preventDefault();

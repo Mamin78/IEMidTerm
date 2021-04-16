@@ -70,6 +70,7 @@ function makeUncheckedRadio(id) {
 }
 
 async function handleSubmitClick(name) {
+    name = name.trim();
     //event handler for submit bottom.
     if (name === "") {
         //name box is empty.

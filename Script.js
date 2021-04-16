@@ -26,6 +26,27 @@ function setSavedAnswer(inputGender) {
     document.getElementById("saved-answer").style.display = 'block';
 }
 
+function showError() {
+    document.getElementById("error-msg").style.display = 'block';
+}
+
+function hideError() {
+    document.getElementById("error-msg").style.display = 'none';
+}
+
+function hidePrediction() {
+    document.getElementById("prediction").style.display = 'none';
+}
+
+function hideSavedAnswer() {
+    document.getElementById("saved-answer").style.display = 'none';
+}
+
+function hideRightBorder() {
+    document.getElementsByClassName("left")[0].style.borderRight = '0 dashed #636e72';
+    document.getElementsByClassName("left")[0].style.paddingRight = '0';
+}
+
 function savedAnswerConditions(result, name) {
     //get radio input's values.
     const inputGender = document.getElementsByName("gender");
@@ -43,6 +64,9 @@ function savedAnswerConditions(result, name) {
             setItem(name, "male");
 
             makeUncheckedRadio("male");
+            console.log("first if");
+            document.getElementById("saved-answer").style.display = 'block';
+
         } else if (inputGender[1].checked) {
             setSavedAnswer('female');
 
@@ -51,6 +75,8 @@ function savedAnswerConditions(result, name) {
             setItem(name, "female");
 
             makeUncheckedRadio("female");
+            document.getElementById("saved-answer").style.display = 'block';
+
         }
     } else {
         const savedGender = getItem(name);
@@ -60,7 +86,8 @@ function savedAnswerConditions(result, name) {
             person._name = name;
         } else {
             document.getElementById("saved-answer").style.display = 'none';
-
+            // hideSavedAnswer();
+            hideRightBorder();
         }
     }
 }
@@ -82,15 +109,28 @@ async function handleSubmitClick(name) {
                 `https://api.genderize.io/?name=${name}`,
             ).then((reponse) => reponse.json());
         } catch (error) {
-            window.alert("Your name isn't in our DataBase.!");
+            // window.alert("Your name isn't in our DataBase.!");
+            // showError();
+            // hidePrediction();
+            // savedAnswerConditions(result, name);
+            // hideSavedAnswer();
+            // hideRightBorder();
         }
         console.log(result);
 
         if (result['gender'] === null) {
             // if input name isn't in database we should alert!
-            window.alert("Your name isn't in our DataBase.!");
+            // window.alert("Your name isn't in our DataBase.!");
+            showError();
+            hidePrediction();
+            savedAnswerConditions(result, name);
+            // hideSavedAnswer();
+            // hideRightBorder();
+            console.log("is nuuuuullll");
         } else {
             //set and display right part of page.
+            console.log("is not nulll");
+            hideError();
             setPrediction(result);
             savedAnswerConditions(result, name);
         }

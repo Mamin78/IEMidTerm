@@ -106,11 +106,12 @@ input[type=text] {
     width: 70%;
     border-left: 7px solid #b2bec3;
     margin: 1vh 0 2vh 0;
+    color: #2d3436;
 }
 
 /*when we click on name box it can be wider*/
 input[type=text]:focus {
-    width: 92%;
+    width: 94%;
 }
 
 form {
@@ -125,4 +126,11 @@ form {
 /*i set display of saved answer part as none because when we have not requested, this part shouldn't displayed.*/
 #saved-answer {
     display: none;
+}
+
+#error-msg {
+    background-color: #e74c3c;
+    padding: 8px;
+    display: none;
+    border-left: 8px solid #c0392b;
 }

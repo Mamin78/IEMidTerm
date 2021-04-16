@@ -38,16 +38,16 @@ function hidePrediction() {
     document.getElementById("prediction").style.display = 'none';
 }
 
-function hideSavedAnswer() {
-    document.getElementById("saved-answer").style.display = 'none';
-}
+// function hideSavedAnswer() {
+//     document.getElementById("saved-answer").style.display = 'none';
+// }
 
 function hideRightBorder() {
     document.getElementsByClassName("left")[0].style.borderRight = '0 dashed #636e72';
     document.getElementsByClassName("left")[0].style.paddingRight = '0';
 }
 
-function savedAnswerConditions(result, name) {
+function savedAnswerConditions(name) {
     //get radio input's values.
     const inputGender = document.getElementsByName("gender");
 
@@ -55,9 +55,12 @@ function savedAnswerConditions(result, name) {
         //if one radio box is checked.
         if (getItem(name) !== null) {
             removeItem(name);
+            console.log("remove old history");
         }
         if (inputGender[0].checked) {
-            setSavedAnswer('male');
+            // document.getElementById("saved-answer").style.display = 'block';
+
+            setSavedAnswer("male");
 
             person._name = name;
 
@@ -65,17 +68,16 @@ function savedAnswerConditions(result, name) {
 
             makeUncheckedRadio("male");
             console.log("first if");
-            document.getElementById("saved-answer").style.display = 'block';
 
         } else if (inputGender[1].checked) {
-            setSavedAnswer('female');
+            setSavedAnswer("female");
 
             person._name = name;
 
             setItem(name, "female");
 
             makeUncheckedRadio("female");
-            document.getElementById("saved-answer").style.display = 'block';
+            // document.getElementById("saved-answer").style.display = 'block';
 
         }
     } else {
@@ -84,8 +86,9 @@ function savedAnswerConditions(result, name) {
             //if gender of this name has been saved.
             setSavedAnswer(savedGender);
             person._name = name;
+            document.getElementById("saved-answer").style.display = 'block';
         } else {
-            document.getElementById("saved-answer").style.display = 'none';
+            // document.getElementById("saved-answer").style.display = 'none';
             // hideSavedAnswer();
             hideRightBorder();
         }
@@ -115,6 +118,7 @@ async function handleSubmitClick(name) {
             // savedAnswerConditions(result, name);
             // hideSavedAnswer();
             // hideRightBorder();
+            console.log("catch");
         }
         console.log(result);
 
@@ -123,16 +127,18 @@ async function handleSubmitClick(name) {
             // window.alert("Your name isn't in our DataBase.!");
             showError();
             hidePrediction();
-            savedAnswerConditions(result, name);
+            savedAnswerConditions( name);
+
             // hideSavedAnswer();
             // hideRightBorder();
             console.log("is nuuuuullll");
+            console.log(name)
         } else {
             //set and display right part of page.
             console.log("is not nulll");
             hideError();
             setPrediction(result);
-            savedAnswerConditions(result, name);
+            savedAnswerConditions(name);
         }
     }
 }
